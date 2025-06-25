@@ -11,19 +11,22 @@ const navlinks=[
     }
 ]
 
-
+import { useState } from "react";
 export default function AuthLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const [input,setInput]=useState("");
     const pathname = usePathname();
   return (
    <>
+   <input value={input} onChange={(e)=>setInput(e.target.value)}/>
      {navlinks.map((link) => {
         const isActive = pathname === link.href;
-
+      
         return (
+          
           <Link
             key={link.name}
             href={link.href}
